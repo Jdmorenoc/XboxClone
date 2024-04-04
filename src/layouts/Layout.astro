@@ -7,22 +7,21 @@ const { title } = Astro.props;
 
 import { Icon } from 'astro-icon/components';
 
-const items = [{
-	name:'Game Pass',
-},
-{
-	name:'Juegos' ,
-},
-{
-	name:'Dispositivos',
-},
-{
-	name:'Más',
-}];
+const items = [
+	{
+		icon: "mdi:chevron-down",
+		name: "Opcion 1"
+	},
+	{
+		icon: "mdi:chevron-down",
+		name: "Opcion 2"
+	},
+	{
+		icon: "mdi:chevron-down",
+		name: "Opcion 3"
+	}
+]
 
-const icon = [{
-	Icon: <Icon color='gray' size={16} name="mdi:chevron-down" />
-}]
 ---
 
 <!doctype html>
@@ -35,32 +34,44 @@ const icon = [{
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<header class="container max-w-8xl mx-auto bg-white h-14 flex items-center">
-		<div class="flex space-x-4">
-			<img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31" class="h-6">
-			<div class="w-[2px] h-7 bg-slate-800"></div>
-			<img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW4ESm?ver=c63e" class="h-6">
-		</div>
-		<menu  class="ml-8">
-			<div class="flex items-center">
-				<a href="#" class="hover:underline underline-offset-8 decoration-2">
-					{}
+	<header class="container max-w-7xl mx-auto
+	 bg-white h-16 flex items-center">
+	 <div class="flex space-x-6 ">
+		<img class="h-6" src="https://www.xbox.com/es-CO/?xr=mebarnav" alt="img_microsof">
+		<div class="w-[2px] h-8 bg-slate-800"></div>
+		<img class="h-6" src="/xbox_logo.png" alt="logo de xbox">
+	</div>
+
+	<menu class="ml-8">
+		<div class="flex items-center space-x-4">
+			{items.map((item) =>
+				<div class="flex items-center">
+				<a 
+				href="#"
+				class="hover:underline underline-offset-[6px] decoration-2"
+				>
+				{item.name}
 				</a>
-				<Icon color='gray' size={16} name="mdi:chevron-down" />
-			</div>
-		</menu>
+				<Icon name={item.icon}/>	
+				</div>
+			)}
+		</div>	
+	</menu>
+	
 	</header>
-		<div class="relative">
-			<div class="absolute left-28 h-full flex items-center ">
-				<h1 class="text-white text-6xl font-bold">FINAL FANTASY XIV</h1>
-			</div>
-			<video aria-label="Ambient video alt text" poster="https://assets.xboxservices.com/assets/45/5a/455a189b-0e7a-48bc-a966-9bf5ec8c08c2.jpg?n=896254_Page-Hero-1084_1920x720_01.jpg" muted="" autoplay="" loop="" alt="Video de FINAL FANTASY XIV Online con imágenes del juego y cinemáticas"><source class="heroImgDesktop" src="https://assets.xboxservices.com/assets/12/ff/12ff90f8-439f-42a6-892b-1bf80f02f027.mp4?n=FFXIV-Online_HP-Video_1920x720_04.mp4" type="video/mp4" srcset="https://assets.xboxservices.com/assets/12/ff/12ff90f8-439f-42a6-892b-1bf80f02f027.mp4?n=FFXIV-Online_HP-Video_1920x720_04.mp4"></video>
+	<div class="relative">
+		<div class="absolute left-28 h-full flex items-center">
+			<h1 class="text-white text-5xl font-bold">FINAL FANTASY XIV</h1>
 		</div>
+		<video aria-label="Ambient video alt text" poster="https://assets.xboxservices.com/assets/45/5a/455a189b-0e7a-48bc-a966-9bf5ec8c08c2.jpg?n=896254_Page-Hero-1084_1920x720_01.jpg" muted="" autoplay="" loop="" alt="Video de FINAL FANTASY XIV Online con imágenes del juego y cinemáticas"><source class="heroImgDesktop" src="https://assets.xboxservices.com/assets/12/ff/12ff90f8-439f-42a6-892b-1bf80f02f027.mp4?n=FFXIV-Online_HP-Video_1920x720_04.mp4" type="video/mp4" srcset="https://assets.xboxservices.com/assets/12/ff/12ff90f8-439f-42a6-892b-1bf80f02f027.mp4?n=FFXIV-Online_HP-Video_1920x720_04.mp4"></video>
+	</div>
+
 	<body>
 		<slot />
 	</body>
 </html>
 
-<style is:global>
 
+<style is:global>
+	
 </style>
